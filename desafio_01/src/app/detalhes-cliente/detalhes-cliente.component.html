@@ -1,0 +1,47 @@
+<div class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>{{ modoEdicao ? 'Editar Cliente' : 'Novo Cliente' }}</h2>
+        <button class="btn-fechar" (click)="onCancel()">×</button>
+      </div>
+  
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group" *ngIf="modoEdicao">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" [(ngModel)]="clienteForm.id" disabled>
+          </div>
+  
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" [(ngModel)]="clienteForm.nome" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" [(ngModel)]="clienteForm.telefone" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="perfil">Perfil:</label>
+            <input type="text" id="perfil" name="perfil" [(ngModel)]="clienteForm.perfil">
+          </div>
+  
+          <div class="form-group">
+            <label for="urlFoto">URL da Foto:</label>
+            <input type="text" id="urlFoto" name="urlFoto" [(ngModel)]="clienteForm.urlFoto">
+          </div>
+  
+          <div class="preview-section" *ngIf="clienteForm.urlFoto">
+            <label>Pré-visualização da foto:</label>
+            <img class="preview-foto" [src]="clienteForm.urlFoto" alt="Pré-visualização">
+          </div>
+  
+          <div class="form-actions">
+            <button type="submit" class="btn-salvar">Salvar</button>
+            <button type="button" class="btn-cancelar" (click)="onCancel()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
